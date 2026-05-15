@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payslip Portal</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">Payslip Portal</div>
+      <div id="auth-bar" class="auth-bar hidden"></div>
+    </header>
+
+    <main class="wrap">
+      <section id="view-login" class="card">
+        <h1>Employee login</h1>
+        <p class="muted">
+          Use your <strong>username or email</strong> and password. After login, choose a month to view your payslip.
+        </p>
+        <form id="form-login" class="stack">
+          <label>
+            Username or email
+            <input type="text" name="usernameOrEmail" autocomplete="username" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" autocomplete="current-password" required />
+          </label>
+          <button type="submit">Sign in</button>
+          <p id="login-error" class="error hidden"></p>
+        </form>
+      </section>
+
+      <section id="view-app" class="hidden">
+        <div class="card">
+          <div class="row spread">
+            <div>
+              <h1 id="welcome-title">Welcome</h1>
+              <p class="muted" id="welcome-sub"></p>
+            </div>
+            <button type="button" id="btn-logout" class="secondary">Log out</button>
+          </div>
+        </div>
+
+        <div id="employee-panel" class="hidden">
+          <div class="card">
+            <h2>Monthly payslip</h2>
+            <div class="row">
+              <label>
+                Year
+                <input type="number" id="sel-year" min="2000" max="2100" />
+              </label>
+              <label>
+                Month
+                <select id="sel-month"></select>
+              </label>
+              <button type="button" id="btn-load-payslip">Load payslip</button>
+            </div>
+            <p id="payslip-error" class="error hidden"></p>
+          </div>
+
+          <div id="payslip-card" class="card hidden">
+            <div class="row spread">
+              <div>
+                <h2 id="payslip-period"></h2>
+                <p class="muted" id="payslip-meta"></p>
+              </div>
+              <div class="pill" id="payslip-status"></div>
+            </div>
+
+            <table class="grid-table">
+              <tbody>
+                <tr>
+                  <td>Base salary (monthly)</td>
+                  <td class="num" id="line-base"></td>
+                </tr>
+                <tr>
+                  <td>Overtime pay</td>
+                  <td class="num" id="line-ot"></td>
+                </tr>
+                <tr>
+                  <td>Bonus</td>
+                  <td class="num" id="line-bonus"></td>
+                </tr>
+                <tr class="strong">
+                  <td>Gross</td>
+                  <td class="num" id="line-gross"></td>
+                </tr>
+                <tr>
+                  <td>Income tax (from gross)</td>
+                  <td class="num neg" id="line-tax"></td>
+                </tr>
+                <tr>
+                  <td>Retirement (from gross)</td>
+                  <td class="num neg" id="line-ret"></td>
+                </tr>
+                <tr>
+                  <td>Other deductions</td>
+                  <td class="num neg" id="line-other"></td>
+                </tr>
+                <tr class="strong">
+                  <td>Net pay</td>
+                  <td class="num" id="line-net"></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div id="sign-block" class="sign-block hidden">
+              <h3>Digital attestation</h3>
+              <p class="muted small">
+                By typing your <strong>full legal name</strong> exactly as on file and submitting, you acknowledge you
+                have reviewed this payslip for the stated period. This is stored with a timestamp
+                <span id="sign-ip-note"></span>.
+              </p>
+              <form id="form-sign" class="stack narrow">
+                <label>
+                  Type your full name to sign
+                  <input type="text" id="sign-name" autocomplete="name" />
+                </label>
+                <button type="submit">Sign payslip</button>
+                <p id="sign-error" class="error hidden"></p>
+              </form>
+            </div>
+
+            <div id="signed-block" class="signed-banner hidden">
+              <strong>Signed</strong>
+              <span id="signed-details"></span>
+            </div>
+            <p id="pdf-download-wrap" class="pdf-download hidden">
+              <a id="pdf-download-link" class="secondary" href="#" download>Download signed payslip (PDF)</a>
+            </p>
+          </div>
+        </div>
+
+        <div id="admin-panel" class="hidden">
+          <div class="card">
+            <h2>Admin: payslip by employee code</h2>
+            <p class="muted small">Lookup is restricted to accounts with the admin role.</p>
+            <div class="row">
+              <label>
+                Employee code
+                <input type="text" id="admin-code" placeholder="E001" />
+              </label>
+              <label>
+                Year
+                <input type="number" id="admin-year" min="2000" max="2100" />
+              </label>
+              <label>
+                Month
+                <select id="admin-month"></select>
+              </label>
+              <button type="button" id="admin-load">Load</button>
+            </div>
+            <p id="admin-error" class="error hidden"></p>
+            <pre id="admin-json" class="json-out hidden"></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

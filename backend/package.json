@@ -1,0 +1,33 @@
+{
+  "name": "payslip-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Employee payslip API (Express + PostgreSQL)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node scripts/seed.js",
+    "verify": "node --check src/logger.js && node --check src/db.js && node --check src/pdfStorage.js && node --check src/server.js && node --check src/payslipPdf.js && node --check scripts/seed.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.744.0",
+    "@aws-sdk/s3-request-presigner": "^3.744.0",
+    "archiver": "^7.0.1",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-session": "^1.18.1",
+    "helmet": "^8.0.0",
+    "pdfkit": "^0.15.0",
+    "pg": "^8.13.1",
+    "pino": "^9.6.0",
+    "pino-http": "^10.4.0"
+  }
+}

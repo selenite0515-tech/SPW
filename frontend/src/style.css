@@ -1,0 +1,261 @@
+:root {
+  color-scheme: light dark;
+  --bg: #0f1419;
+  --surface: #1a222d;
+  --border: #2a3544;
+  --text: #e8eef5;
+  --muted: #9db0c4;
+  --accent: #3b82f6;
+  --accent-dim: #2563eb;
+  --danger: #f87171;
+  --ok: #34d399;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f4f6f9;
+    --surface: #ffffff;
+    --border: #d8dee8;
+    --text: #111827;
+    --muted: #5b677a;
+    --accent: #1d4ed8;
+    --accent-dim: #1e40af;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.auth-bar {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.5rem;
+  font-weight: 650;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stack.narrow {
+  max-width: 420px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+input,
+select,
+button {
+  font: inherit;
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+
+button {
+  cursor: pointer;
+  background: var(--accent);
+  border-color: var(--accent-dim);
+  color: #fff;
+  font-weight: 600;
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+a.secondary {
+  display: inline-block;
+  text-decoration: none;
+  font: inherit;
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+a.secondary:hover {
+  filter: brightness(1.05);
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.row.spread {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.muted.small,
+.small {
+  font-size: 0.88rem;
+}
+
+.error {
+  color: var(--danger);
+  margin: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.grid-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.grid-table td {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.grid-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.grid-table .neg {
+  color: #fb923c;
+}
+
+.grid-table .strong td {
+  font-weight: 700;
+  border-bottom: 2px solid var(--border);
+}
+
+.pill {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.sign-block {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+
+.signed-banner {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  color: var(--text);
+}
+
+.pdf-download {
+  margin-top: 0.75rem;
+}
+
+.json-out {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  overflow: auto;
+  max-height: 420px;
+  font-size: 0.82rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 0.75rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.45rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.data-table th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.data-table input[type='checkbox'] {
+  width: auto;
+}
